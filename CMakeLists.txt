@@ -1,7 +1,7 @@
 # If Lua is installed in a non-standard location, please set the LUA_DIR
 # environment variable to point to prefix for the install. Eg:
 #       Unix: export LUA_DIR=/home/user/pkg
-#       Windows: set LUA_DIR=c:\lua51
+#       Windows: set LUA_DIR=c:\lua54
 
 project(lua-cjson C)
 cmake_minimum_required(VERSION 2.6)
@@ -15,7 +15,7 @@ if(NOT CMAKE_BUILD_TYPE)
         FORCE)
 endif()
 
-find_package(Lua51 REQUIRED)
+find_package(Lua REQUIRED)
 include_directories(${LUA_INCLUDE_DIR})
 
 if(NOT USE_INTERNAL_FPCONV)
@@ -65,7 +65,7 @@ if(WIN32)
     # Windows sprintf()/strtod() handle NaN/inf differently. Not supported.
     add_definitions(-DDISABLE_INVALID_NUMBERS)
 else()
-    set(_lua_module_dir "${_lua_lib_dir}/lua/5.1")
+    set(_lua_module_dir "${_lua_lib_dir}/lua/5.4")
 endif()
 
 if(MSVC)
